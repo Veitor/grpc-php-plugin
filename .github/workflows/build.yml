@@ -46,6 +46,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
         with:
-          files: $GITHUB_WORKSPACE/grpc/cmake/build/grpc_php_plugin
+          files: ./grpc/cmake/build/grpc_php_plugin
           tag_name: ${{ env.GRPC_REPO_VERSION }}
           name: grpc_php_plugin

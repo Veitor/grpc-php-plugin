@@ -39,7 +39,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: show result
         id: show_result
-        run: [ -f "$GITHUB_WORKSPACE/grpc/cmake/build/grpc_php_plugin" ] && exit 0 || exit 1
+        run: |
+          [ -f "$GITHUB_WORKSPACE/grpc/cmake/build/grpc_php_plugin" ] && exit 0 || exit 1
 
       - name: publish release
         uses: softprops/action-gh-release@v1

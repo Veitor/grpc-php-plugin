@@ -34,7 +34,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: make build
-        run: cd grpc && chmod +x ./tools/bazel && ./tools/bazel clean --expunge && ./tools/bazel build src/compiler:grpc_php_plugin
+        run: cd grpc && chmod +x ./tools/bazel && ./tools/bazel clean --expunge && ./tools/bazel @com_google_protobuf//:protoc && ./tools/bazel build src/compiler:grpc_php_plugin
         # run: sudo apt install cmake make && cd $GITHUB_WORKSPACE/grpc && mkdir -p cmake/build && cd cmake/build && cmake ../.. && make grpc_php_plugin
 
       # Runs a set of commands using the runners shell

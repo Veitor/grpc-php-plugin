@@ -32,16 +32,10 @@ jobs:
           submodules: recursive
           path: 'grpc'
 
-      # - name: Install Basilisk
-      #   run: |
-      #     wget https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazelisk-linux-amd64
-      #     chmod a+x bazelisk-linux-amd64
-      #     sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
-
       # Runs a single command using the runners shell
       - name: make build
-        run: cd grpc && chmod +x ./tools/bazel && ./tools/bazel build src/compiler:grpc_php_plugin
-        # run: sudo apt install cmake make && cd $GITHUB_WORKSPACE/grpc && mkdir -p cmake/build && cd cmake/build && cmake ../.. && make grpc_php_plugin
+        # run: cd grpc && chmod +x ./tools/bazel && ./tools/bazel build src/compiler:grpc_php_plugin
+        run: sudo apt install cmake make && cd $GITHUB_WORKSPACE/grpc && mkdir -p cmake/build && cd cmake/build && cmake ../.. && make grpc_php_plugin
 
       # Runs a set of commands using the runners shell
       # - name: show result
@@ -53,6 +47,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
         with:
-          files: ./grpc/bazel-bin/src/compiler/grpc_php_plugin
+          files: ./grpc/cmake/build/grpc_php_plugin
           tag_name: ${{ env.GRPC_REPO_VERSION }}
           name: grpc-php-plugin

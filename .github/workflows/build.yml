@@ -42,7 +42,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: make build
-        run: ls -la $ANDROID_NDK_HOME && cd grpc && bazel build src/compiler:grpc_php_plugin
+        run: ls -la $ANDROID_NDK_HOME && cd grpc && /usr/local/bin/bazel build src/compiler:grpc_php_plugin
         # run: $sudo apt install cmake make && cd $GITHUB_WORKSPACE/grpc && mkdir -p cmake/build && cd cmake/build && cmake ../.. && make grpc_php_plugin
 
       # Runs a set of commands using the runners shell

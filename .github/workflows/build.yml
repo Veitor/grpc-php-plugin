@@ -32,15 +32,15 @@ jobs:
           submodules: recursive
           path: 'grpc'
 
-      - name: Install Basilisk
-        run: |
-          wget https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazelisk-linux-amd64
-          chmod a+x bazelisk-linux-amd64
-          sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
+      # - name: Install Basilisk
+      #   run: |
+      #     wget https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazelisk-linux-amd64
+      #     chmod a+x bazelisk-linux-amd64
+      #     sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
 
       # Runs a single command using the runners shell
       - name: make build
-        run: pwd && ls -la && cd grpc && /usr/local/bin/bazel build src/compiler:grpc_php_plugin
+        run: cd grpc && chmod +x ./tools/bazel && ./tools/bazel build src/compiler:grpc_php_plugin
         # run: sudo apt install cmake make && cd $GITHUB_WORKSPACE/grpc && mkdir -p cmake/build && cd cmake/build && cmake ../.. && make grpc_php_plugin
 
       # Runs a set of commands using the runners shell

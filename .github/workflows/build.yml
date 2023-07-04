@@ -12,6 +12,7 @@ on:
 # version of grpc repository to make compile
 env:
   GRPC_REPO_VERSION: "v1.56.0"
+  DISABLE_BAZEL_WRAPPER: 1
   # specify bazel version
   # OVERRIDE_BAZEL_VERSION: "5.4.1"
 
